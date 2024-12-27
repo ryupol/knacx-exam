@@ -1,0 +1,35 @@
+version: "3.7"
+
+services:
+  main_db:
+    image: mysql:8.0
+    container_name: main_db
+    restart: unless-stopped
+    environment:
+      MYSQL_MAIN_ROOT_PASSWORD: ${MYSQL_MAIN_ROOT_PASSWORD}
+      MYSQL_MAIN_USER: ${MYSQL_MAIN_USER}
+      MYSQL_MAIN_PASSWORD: ${MYSQL_MAIN_PASSWORD}
+      MYSQL_MAIN_DATABASE: ${MYSQL_MAIN_DATABASE}
+    ports:
+      - "3306:3306"
+    volumes:
+      - main_mysql_data:/var/lib/mysql
+  secondary_db:
+    image: mysql:8.0
+    container_name: secondary_db
+    restart: unless-stopped
+    environment:
+      MYSQL_SEC_ROOT_PASSWORD: ${MYSQL_SEC_ROOT_PASSWORD}
+      MYSQL_SEC_USER: ${MYSQL_SEC_USER}
+      MYSQL_SEC_PASSWORD: ${MYSQL_SEC_PASSWORD}
+      MYSQL_SEC_DATABASE: ${MYSQL_SEC_DATABASE}
+    ports:
+      - "3307:3306"
+    volumes:
+      - secondary_mysql_data:/var/lib/mysql
+
+volumes:
+  main_mysql_data:
+    driver: local
+  secondary_mysql_data:
+    driver: local
