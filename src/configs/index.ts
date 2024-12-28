@@ -11,8 +11,9 @@ const MYSQL_SEC_PASSWORD = process.env.MYSQL_SEC_PASSWORD || '123';
 const MYSQL_SEC_DATABASE =
   process.env.MYSQL_SEC_DATABASE || 'knacx_exam_backup';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'mysecret';
-
+const JWT_ACCESS_SECRET = process.env.JWT_ACCESS_SECRET || 'mysecret';
+const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET || 'mysecret';
+const CACHE_KEY = process.env.CACHE_KEY || 'key';
 export {
   MYSQL_MAIN_HOST,
   MYSQL_MAIN_ROOT_PASSWORD,
@@ -24,5 +25,7 @@ export {
   MYSQL_SEC_USER,
   MYSQL_SEC_PASSWORD,
   MYSQL_SEC_DATABASE,
-  JWT_SECRET,
+  JWT_ACCESS_SECRET,
+  JWT_REFRESH_SECRET,
+  CACHE_KEY,
 };
